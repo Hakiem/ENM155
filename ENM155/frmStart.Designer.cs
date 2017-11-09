@@ -28,199 +28,54 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtIndustri2 = new System.Windows.Forms.TextBox();
-            this.txtIndustri1 = new System.Windows.Forms.TextBox();
-            this.txtBastad2 = new System.Windows.Forms.TextBox();
-            this.txtBostad1 = new System.Windows.Forms.TextBox();
-            this.txtTrp = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.chkBio = new System.Windows.Forms.CheckBox();
             this.chkFossila = new System.Windows.Forms.CheckBox();
-            this.chkSpill = new System.Windows.Forms.CheckBox();
             this.chkKarn = new System.Windows.Forms.CheckBox();
             this.chkVatten = new System.Windows.Forms.CheckBox();
             this.chkVind = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.cboTime = new System.Windows.Forms.ComboBox();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.btnRecalculate = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.statusStrip1.Location = new System.Drawing.Point(0, 726);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1325, 22);
-            this.statusStrip1.TabIndex = 0;
-            this.statusStrip1.Text = "statusStrip1";
             // 
             // panel1
             // 
             this.panel1.AllowDrop = true;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.chart1);
-            this.panel1.Location = new System.Drawing.Point(13, 13);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(909, 453);
+            this.panel1.Size = new System.Drawing.Size(921, 686);
             this.panel1.TabIndex = 1;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.txtIndustri2);
-            this.groupBox1.Controls.Add(this.txtIndustri1);
-            this.groupBox1.Controls.Add(this.txtBastad2);
-            this.groupBox1.Controls.Add(this.txtBostad1);
-            this.groupBox1.Controls.Add(this.txtTrp);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.groupBox1.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(13, 480);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(909, 229);
-            this.groupBox1.TabIndex = 2;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "ENERGIANVÄNDNINGEN I OLIKA SEKTORER (TWh/År)";
-            // 
-            // txtIndustri2
-            // 
-            this.txtIndustri2.Location = new System.Drawing.Point(573, 184);
-            this.txtIndustri2.Name = "txtIndustri2";
-            this.txtIndustri2.Size = new System.Drawing.Size(100, 31);
-            this.txtIndustri2.TabIndex = 10;
-            this.txtIndustri2.Text = "49";
-            this.txtIndustri2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtIndustri1
-            // 
-            this.txtIndustri1.Location = new System.Drawing.Point(388, 184);
-            this.txtIndustri1.Name = "txtIndustri1";
-            this.txtIndustri1.Size = new System.Drawing.Size(100, 31);
-            this.txtIndustri1.TabIndex = 9;
-            this.txtIndustri1.Text = "91";
-            this.txtIndustri1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtBastad2
-            // 
-            this.txtBastad2.Location = new System.Drawing.Point(573, 135);
-            this.txtBastad2.Name = "txtBastad2";
-            this.txtBastad2.Size = new System.Drawing.Size(100, 31);
-            this.txtBastad2.TabIndex = 8;
-            this.txtBastad2.Text = "52";
-            this.txtBastad2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtBostad1
-            // 
-            this.txtBostad1.Location = new System.Drawing.Point(388, 135);
-            this.txtBostad1.Name = "txtBostad1";
-            this.txtBostad1.Size = new System.Drawing.Size(100, 31);
-            this.txtBostad1.TabIndex = 7;
-            this.txtBostad1.Text = "91";
-            this.txtBostad1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtTrp
-            // 
-            this.txtTrp.Location = new System.Drawing.Point(191, 95);
-            this.txtTrp.Name = "txtTrp";
-            this.txtTrp.Size = new System.Drawing.Size(100, 31);
-            this.txtTrp.TabIndex = 6;
-            this.txtTrp.Text = "17";
-            this.txtTrp.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.ForeColor = System.Drawing.Color.Red;
-            this.label6.Location = new System.Drawing.Point(569, 45);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(108, 23);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "EL, ÖVRIGT";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.ForeColor = System.Drawing.Color.Red;
-            this.label5.Location = new System.Drawing.Point(400, 45);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(72, 23);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "VÄRME";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.ForeColor = System.Drawing.Color.Red;
-            this.label4.Location = new System.Drawing.Point(165, 45);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(160, 23);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "RÖRELSEENERGI";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.Color.Blue;
-            this.label2.Location = new System.Drawing.Point(16, 187);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(96, 23);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "INDUSTRI";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.Color.Blue;
-            this.label1.Location = new System.Drawing.Point(16, 143);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(104, 23);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "BÖSTADER";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.Color.Blue;
-            this.label3.Location = new System.Drawing.Point(16, 98);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(117, 23);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "TRANSPORT";
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.chkBio);
             this.groupBox2.Controls.Add(this.chkFossila);
-            this.groupBox2.Controls.Add(this.chkSpill);
             this.groupBox2.Controls.Add(this.chkKarn);
             this.groupBox2.Controls.Add(this.chkVatten);
             this.groupBox2.Controls.Add(this.chkVind);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(938, 13);
+            this.groupBox2.Location = new System.Drawing.Point(3, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(375, 217);
+            this.groupBox2.Size = new System.Drawing.Size(386, 230);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Primär Energi Tillförsel";
@@ -231,12 +86,13 @@
             this.chkBio.Checked = true;
             this.chkBio.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkBio.Font = new System.Drawing.Font("Cambria", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkBio.Location = new System.Drawing.Point(19, 176);
+            this.chkBio.Location = new System.Drawing.Point(19, 154);
             this.chkBio.Name = "chkBio";
             this.chkBio.Size = new System.Drawing.Size(136, 26);
             this.chkBio.TabIndex = 5;
             this.chkBio.Text = "Bio Bränslen";
             this.chkBio.UseVisualStyleBackColor = true;
+            this.chkBio.CheckedChanged += new System.EventHandler(this.chkBio_CheckedChanged);
             // 
             // chkFossila
             // 
@@ -244,25 +100,13 @@
             this.chkFossila.Checked = true;
             this.chkFossila.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkFossila.Font = new System.Drawing.Font("Cambria", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkFossila.Location = new System.Drawing.Point(19, 149);
+            this.chkFossila.Location = new System.Drawing.Point(19, 127);
             this.chkFossila.Name = "chkFossila";
             this.chkFossila.Size = new System.Drawing.Size(163, 26);
             this.chkFossila.TabIndex = 4;
             this.chkFossila.Text = "Fossila Bränslen";
             this.chkFossila.UseVisualStyleBackColor = true;
-            // 
-            // chkSpill
-            // 
-            this.chkSpill.AutoSize = true;
-            this.chkSpill.Checked = true;
-            this.chkSpill.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkSpill.Font = new System.Drawing.Font("Cambria", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkSpill.Location = new System.Drawing.Point(19, 122);
-            this.chkSpill.Name = "chkSpill";
-            this.chkSpill.Size = new System.Drawing.Size(67, 26);
-            this.chkSpill.TabIndex = 3;
-            this.chkSpill.Text = "Spill";
-            this.chkSpill.UseVisualStyleBackColor = true;
+            this.chkFossila.CheckedChanged += new System.EventHandler(this.chkFossila_CheckedChanged);
             // 
             // chkKarn
             // 
@@ -276,6 +120,7 @@
             this.chkKarn.TabIndex = 2;
             this.chkKarn.Text = "Kärn";
             this.chkKarn.UseVisualStyleBackColor = true;
+            this.chkKarn.CheckedChanged += new System.EventHandler(this.chkKarn_CheckedChanged);
             // 
             // chkVatten
             // 
@@ -289,6 +134,7 @@
             this.chkVatten.TabIndex = 1;
             this.chkVatten.Text = "Vatten";
             this.chkVatten.UseVisualStyleBackColor = true;
+            this.chkVatten.CheckedChanged += new System.EventHandler(this.chkVatten_CheckedChanged);
             // 
             // chkVind
             // 
@@ -302,14 +148,16 @@
             this.chkVind.TabIndex = 0;
             this.chkVind.Text = "Vind";
             this.chkVind.UseVisualStyleBackColor = true;
+            this.chkVind.CheckedChanged += new System.EventHandler(this.chkVind_CheckedChanged);
             // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.cboTime);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox3.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(938, 247);
+            this.groupBox3.Location = new System.Drawing.Point(3, 239);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(375, 100);
+            this.groupBox3.Size = new System.Drawing.Size(386, 94);
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Tidsperiod från 2015";
@@ -317,9 +165,9 @@
             // cboTime
             // 
             this.cboTime.FormattingEnabled = true;
-            this.cboTime.Location = new System.Drawing.Point(19, 36);
+            this.cboTime.Location = new System.Drawing.Point(19, 30);
             this.cboTime.Name = "cboTime";
-            this.cboTime.Size = new System.Drawing.Size(92, 31);
+            this.cboTime.Size = new System.Drawing.Size(249, 31);
             this.cboTime.TabIndex = 0;
             this.cboTime.Text = "2015";
             this.cboTime.SelectedIndexChanged += new System.EventHandler(this.cboTime_SelectedIndexChanged);
@@ -331,85 +179,110 @@
             this.chart1.BorderSkin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.chart1.BorderSkin.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.VerticalCenter;
             this.chart1.BorderSkin.SkinStyle = System.Windows.Forms.DataVisualization.Charting.BorderSkinStyle.Emboss;
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
-            this.chart1.Location = new System.Drawing.Point(9, 3);
+            chartArea5.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea5);
+            this.chart1.Dock = System.Windows.Forms.DockStyle.Fill;
+            legend5.Name = "Legend1";
+            this.chart1.Legends.Add(legend5);
+            this.chart1.Location = new System.Drawing.Point(0, 0);
             this.chart1.Name = "chart1";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chart1.Series.Add(series2);
-            this.chart1.Size = new System.Drawing.Size(898, 453);
+            this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Excel;
+            this.chart1.Size = new System.Drawing.Size(917, 682);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
             // 
-            // btnRecalculate
+            // dataGridView1
             // 
-            this.btnRecalculate.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRecalculate.Location = new System.Drawing.Point(938, 363);
-            this.btnRecalculate.Name = "btnRecalculate";
-            this.btnRecalculate.Size = new System.Drawing.Size(375, 35);
-            this.btnRecalculate.TabIndex = 5;
-            this.btnRecalculate.Text = "&Räkna om";
-            this.btnRecalculate.UseVisualStyleBackColor = true;
-            this.btnRecalculate.Click += new System.EventHandler(this.btnRecalculate_Click);
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle5;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.GridColor = System.Drawing.Color.Salmon;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 339);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(386, 344);
+            this.dataGridView1.TabIndex = 6;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 1);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1325, 692);
+            this.tableLayoutPanel1.TabIndex = 7;
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Controls.Add(this.groupBox2, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.dataGridView1, 1, 2);
+            this.tableLayoutPanel2.Controls.Add(this.groupBox3, 1, 1);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(930, 3);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 3;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70.24129F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 29.75871F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 349F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(392, 686);
+            this.tableLayoutPanel2.TabIndex = 0;
             // 
             // frmStart
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1325, 748);
-            this.Controls.Add(this.btnRecalculate);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.statusStrip1);
-            this.MaximizeBox = false;
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(1325, 692);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "frmStart";
             this.Text = "frmStart";
             this.Load += new System.EventHandler(this.frmStart_Load);
             this.panel1.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.CheckBox chkSpill;
         private System.Windows.Forms.CheckBox chkKarn;
         private System.Windows.Forms.CheckBox chkVatten;
         private System.Windows.Forms.CheckBox chkVind;
         private System.Windows.Forms.ComboBox cboTime;
         private System.Windows.Forms.CheckBox chkBio;
         private System.Windows.Forms.CheckBox chkFossila;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtIndustri2;
-        private System.Windows.Forms.TextBox txtIndustri1;
-        private System.Windows.Forms.TextBox txtBastad2;
-        private System.Windows.Forms.TextBox txtBostad1;
-        private System.Windows.Forms.TextBox txtTrp;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
-        private System.Windows.Forms.Button btnRecalculate;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
     }
 }
