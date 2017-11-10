@@ -324,8 +324,6 @@ namespace ENM155
             double b = b1 + b2 + b3;
 
             //------------------------------------------WIND ENERGY----------------------------------------------------------------------
-           
-            
 
             if (year <= 2036) { 
 
@@ -522,7 +520,7 @@ namespace ENM155
             dt.Rows.Add(new object[] { endYear, value[0], value[1], value[2], value[3], value[4] });
 
             var pivotedDataTable = new DataTable(); //the pivoted result
-            var firstColumnName = "Energikälla";
+            var firstColumnName = "Energikällor";
             var pivotColumnName = "År";
 
             pivotedDataTable.Columns.Add(firstColumnName);
@@ -541,14 +539,24 @@ namespace ENM155
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.AllowUserToResizeRows = false;
 
-            dataGridView1.ColumnHeadersHeightSizeMode =
-                DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridView1.AutoSizeColumnsMode =
-                DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.DefaultCellStyle.NullValue = "no entry";
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
 
             dataGridView1.DataSource = pivotedDataTable;
+            dataGridView1.EnableHeadersVisualStyles = false;
+
+            DataGridViewCellStyle style;
+            style = new DataGridViewCellStyle();
+            style.Alignment = DataGridViewContentAlignment.BottomCenter;
+            style.BackColor = Color.Navy;
+            style.Font = new Font("Cambria", 11F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
+            style.ForeColor = Color.White;
+            style.SelectionBackColor = SystemColors.Highlight;
+            style.SelectionForeColor = Color.Navy;
+            style.WrapMode = DataGridViewTriState.True;
+
+            foreach (DataGridViewColumn col in dataGridView1.Columns) col.HeaderCell.Style = style;
         }
         #endregion
 
