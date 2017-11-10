@@ -23,7 +23,6 @@ namespace ENM155
 
         private double electricityHousing;
         private double electricityIndustry;
-        private double electricityKeeper;
 
         private double totalEnergyNeedElect;
 
@@ -162,6 +161,7 @@ namespace ENM155
             this.StartPosition = FormStartPosition.CenterScreen;
             this.Text = "KURS ENM155, LP2 : 2017 -> MODELLERING AV SVENSKA ENERGISCENARIER";
             this.MaximizeBox = false;
+            totalEnergyNeedElect = housingEnergyForElectricity + industryEnergyForElectricity;
 
             InitializeElectricityBaseCalculations();
             growingValues = new Dictionary<int, double[]>();
@@ -271,7 +271,6 @@ namespace ENM155
         private void InitializeElectricityBaseCalculations()
         {
             // Calculate EL for Housing
-
             electricityHousing = CalculateElectricityForHousingAndIndustry(
                 new Elect_Heat { energyHeat = housingEnergyForHeat, electToHeatDistribution = 0.21, electToHeatEfficiency = 1 },
                 new Elect_HeatPump { energyHeat = housingEnergyForHeat, fjarrVarmeToHeatDistribution = 0.49, pumpToHeatDistribution = 0.09, fjarrVarmeToHeatEfficiency = 0.9, heatPumpToHeatEfficiency = 3 },
@@ -326,16 +325,16 @@ namespace ENM155
             double b = b1 + b2 + b3;
 
             //------------------------------------------WIND ENERGY----------------------------------------------------------------------
-
-            if (year <= 2036) { 
+            double we1, we2;
+            if (we <= (0.3 * totalEnergyNeedElect)) { 
 
                 // Calculate Energy supplied to housing from Wind Energy
-                double we1 = CalculateEnergyFromWind(new WindEnergy_Electricity { windToElectDistribution = 0.1, windToElectEfficiency = 1 }, electricityHousing);
+                we1 = CalculateEnergyFromWind(new WindEnergy_Electricity { windToElectDistribution = 0.1, windToElectEfficiency = 1 }, electricityHousing);
 
                 // Calculate Energy supplied to industries from Wind Energy
-                double we2 = CalculateEnergyFromWind(new WindEnergy_Electricity { windToElectDistribution = 0.1, windToElectEfficiency = 1 }, electricityIndustry);
+                we2 = CalculateEnergyFromWind(new WindEnergy_Electricity { windToElectDistribution = 0.1, windToElectEfficiency = 1 }, electricityIndustry);
 
-                we = we1 + we2;
+                we = (we1 + we2) * 1.05;
             }
             //------------------------------------------WATER ENERGY----------------------------------------------------------------------
 
@@ -389,8 +388,6 @@ namespace ENM155
 
                 totalEnergyNeedElect = housingEnergyForElectricity + industryEnergyForElectricity;
 
-
-
                 InitializeElectricityBaseCalculations();
             }
 
@@ -422,18 +419,19 @@ namespace ENM155
             chartArea1.Area3DStyle.PointDepth = 200;
             chartArea1.Area3DStyle.Rotation = 9;
             chartArea1.Area3DStyle.WallWidth = 0;
-            chartArea1.AxisX.LabelStyle.Font = new Font("Cambria", 8.25F, System.Drawing.FontStyle.Bold);
-            chartArea1.AxisX.LineColor = Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            chartArea1.AxisX.MajorGrid.LineColor = Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            chartArea1.AxisY.LabelStyle.Font = new System.Drawing.Font("Cambria", 8.25F, FontStyle.Bold);
-            chartArea1.AxisY.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            chartArea1.AxisY.MajorGrid.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            chartArea1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(165)))), ((int)(((byte)(191)))), ((int)(((byte)(228)))));
+            chartArea1.AxisX.IntervalAutoMode = IntervalAutoMode.VariableCount;
+            chartArea1.AxisY.IntervalAutoMode = IntervalAutoMode.VariableCount;
+
+            chartArea1.AxisX.MinorGrid.Enabled = true;
+            chartArea1.AxisY.MinorGrid.Enabled = true;
+
+            chartArea1.AxisX.LabelStyle.Font = new Font("Cambria", 8.25F, FontStyle.Bold);
+            
             chartArea1.BackGradientStyle = GradientStyle.TopBottom;
             chartArea1.BackSecondaryColor = Color.White;
             chartArea1.BorderColor = Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             chartArea1.BorderDashStyle = ChartDashStyle.Solid;
-            chart1.ChartAreas[0].AxisX.ScaleView.Zoomable = true;
+            //chart1.ChartAreas[0].AxisX.ScaleView.Zoomable = true;
 
             #endregion
 
@@ -442,7 +440,7 @@ namespace ENM155
             if (chkFossila.Checked)
             {
                 Series fossils = new Series();
-                fossils.ChartType = SeriesChartType.StepLine;
+                fossils.ChartType = SeriesChartType.Spline;
                 fossils.Points.DataBindXY(growingValues.Keys.ToArray<int>(), growingValues.Values.Select(w => w.GetValue(0)).ToArray());
                 fossils.Color = Color.Blue;
                 fossils.BorderWidth = 2;
