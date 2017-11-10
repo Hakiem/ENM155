@@ -23,9 +23,11 @@ namespace ENM155
 
         private double electricityHousing;
         private double electricityIndustry;
-        double electricityKeeper;
+        private double electricityKeeper;
 
-        double we = 0;
+        private double totalEnergyNeedElect;
+
+        private double we = 0;
 
         private static double transmissionLoss = 0.9;
 
@@ -275,12 +277,12 @@ namespace ENM155
                 new Elect_HeatPump { energyHeat = housingEnergyForHeat, fjarrVarmeToHeatDistribution = 0.49, pumpToHeatDistribution = 0.09, fjarrVarmeToHeatEfficiency = 0.9, heatPumpToHeatEfficiency = 3 },
                 housingEnergyForElectricity);
 
-            electricityKeeper = electricityHousing;
-
             // Calculate EL for industriy
             electricityIndustry = CalculateElectricityForHousingAndIndustry(
                 new Elect_HeatPump { energyHeat = industryEnergyForHeat, fjarrVarmeToHeatDistribution = 0.04, pumpToHeatDistribution = 0.09, fjarrVarmeToHeatEfficiency = 0.9, heatPumpToHeatEfficiency = 3 },
                 industryEnergyForElectricity);
+
+            totalEnergyNeedElect = electricityHousing + electricityIndustry;
         }
 
         private double[] CalculateAllEnergies(int year)
@@ -384,6 +386,10 @@ namespace ENM155
 
                 industryEnergyForHeat *= 1.005;
                 industryEnergyForElectricity *= 1.005;
+
+                totalEnergyNeedElect = housingEnergyForElectricity + industryEnergyForElectricity;
+
+
 
                 InitializeElectricityBaseCalculations();
             }
@@ -535,6 +541,8 @@ namespace ENM155
                         dt.Rows.Cast<DataRow>().Select(x => x[dt.Columns[index].ColumnName])).ToArray());
             }
 
+            #region DataGridView Styling
+
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.AllowUserToResizeRows = false;
@@ -557,6 +565,8 @@ namespace ENM155
             style.WrapMode = DataGridViewTriState.True;
 
             foreach (DataGridViewColumn col in dataGridView1.Columns) col.HeaderCell.Style = style;
+
+            #endregion
         }
         #endregion
 
@@ -594,6 +604,11 @@ namespace ENM155
         private void chkBio_CheckedChanged(object sender, EventArgs e)
         {
             LoadGraph();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
