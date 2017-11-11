@@ -435,13 +435,14 @@ namespace ENM155
 
             #endregion
 
+            var allYearsArray = growingValues.Keys.ToArray<int>();
 
             // FOSSIL FUELS
             if (chkFossila.Checked)
             {
                 Series fossils = new Series();
                 fossils.ChartType = SeriesChartType.Spline;
-                fossils.Points.DataBindXY(growingValues.Keys.ToArray<int>(), growingValues.Values.Select(w => w.GetValue(0)).ToArray());
+                fossils.Points.DataBindXY(allYearsArray, growingValues.Values.Select(w => w.GetValue(0)).ToArray());
                 fossils.Color = Color.Blue;
                 fossils.BorderWidth = 2;
                 fossils.Name = "Fossila Bränslen";
@@ -453,7 +454,7 @@ namespace ENM155
             {
                 Series bio = new Series();
                 bio.ChartType = SeriesChartType.Spline;
-                bio.Points.DataBindXY(growingValues.Keys.ToArray<int>(), growingValues.Values.Select(w => w.GetValue(1)).ToArray());
+                bio.Points.DataBindXY(allYearsArray, growingValues.Values.Select(w => w.GetValue(1)).ToArray());
                 bio.Color = Color.Red;
                 bio.BorderWidth = 2;
                 bio.Name = "Bio Bränslen";
@@ -465,7 +466,7 @@ namespace ENM155
             {
                 Series wind = new Series();
                 wind.ChartType = SeriesChartType.Spline;
-                wind.Points.DataBindXY(growingValues.Keys.ToArray<int>(), growingValues.Values.Select(w => w.GetValue(2)).ToArray());
+                wind.Points.DataBindXY(allYearsArray, growingValues.Values.Select(w => w.GetValue(2)).ToArray());
                 wind.Color = Color.Green;
                 wind.BorderWidth = 2;
                 wind.Name = "Vindkraft";
@@ -478,7 +479,7 @@ namespace ENM155
             {
                 Series vatten = new Series();
                 vatten.ChartType = SeriesChartType.Spline;
-                vatten.Points.DataBindXY(growingValues.Keys.ToArray<int>(), growingValues.Values.Select(w => w.GetValue(3)).ToArray());
+                vatten.Points.DataBindXY(allYearsArray, growingValues.Values.Select(w => w.GetValue(3)).ToArray());
                 vatten.Color = Color.Black;
                 vatten.BorderWidth = 2;
                 vatten.Name = "Vattenkraft";
@@ -490,7 +491,7 @@ namespace ENM155
             {
                 Series nuclear = new Series();
                 nuclear.ChartType = SeriesChartType.Spline;
-                nuclear.Points.DataBindXY(growingValues.Keys.ToArray<int>(), growingValues.Values.Select(w => w.GetValue(4)).ToArray());
+                nuclear.Points.DataBindXY(allYearsArray, growingValues.Values.Select(w => w.GetValue(4)).ToArray());
                 nuclear.Color = Color.Brown;
                 nuclear.BorderWidth = 2;
                 nuclear.Name = "Kärnkraft";
@@ -502,69 +503,74 @@ namespace ENM155
 
         private void ReloadDataGridView(int endYear)
         {
-            DataTable dt = new DataTable();
-
-            var keyValuePair = growingValues.Single(x => x.Key == 2015);
-            double[] value = keyValuePair.Value;
-
-            DataRow row = dt.NewRow();
-
-            dt.Columns.Add("År", typeof(int));
-            dt.Columns.Add("Fossil", typeof(double));
-            dt.Columns.Add("Bio", typeof(double));
-            dt.Columns.Add("Vind", typeof(double));
-            dt.Columns.Add("Vatten", typeof(double));
-            dt.Columns.Add("Kärn", typeof(double));
-
-            dt.Rows.Add(new object[] { 2015, value[0], value[1], value[2], value[3], value[4] });
-
-            keyValuePair = growingValues.Single(x => x.Key == endYear);
-            value = keyValuePair.Value;
-
-            dt.Rows.Add(new object[] { endYear, value[0], value[1], value[2], value[3], value[4] });
-
-            var pivotedDataTable = new DataTable(); //the pivoted result
-            var firstColumnName = "Energikällor";
-            var pivotColumnName = "År";
-
-            pivotedDataTable.Columns.Add(firstColumnName);
-
-            pivotedDataTable.Columns.AddRange(
-                dt.Rows.Cast<DataRow>().Select(x => new DataColumn(x[pivotColumnName].ToString())).ToArray());
-
-            for (var index = 1; index < dt.Columns.Count; index++)
+            using (var dt = new DataTable())
             {
-                pivotedDataTable.Rows.Add(
-                    new List<object> { dt.Columns[index].ColumnName }.Concat(
-                        dt.Rows.Cast<DataRow>().Select(x => x[dt.Columns[index].ColumnName])).ToArray());
+                var keyValuePair = growingValues.Single(x => x.Key == baseYear);
+                var value = keyValuePair.Value;
+
+                DataRow row = dt.NewRow();
+
+                #region DataTable dt Column Names
+                dt.Columns.Add("År", typeof(int));
+                dt.Columns.Add("Fossil", typeof(double));
+                dt.Columns.Add("Bio", typeof(double));
+                dt.Columns.Add("Vind", typeof(double));
+                dt.Columns.Add("Vatten", typeof(double));
+                dt.Columns.Add("Kärn", typeof(double));
+                #endregion
+
+                dt.Rows.Add(new object[] { 2015, value[0], value[1], value[2], value[3], value[4] });
+
+                keyValuePair = growingValues.Single(x => x.Key == endYear);
+                value = keyValuePair.Value;
+
+                dt.Rows.Add(new object[] { endYear, value[0], value[1], value[2], value[3], value[4] });
+
+                using (var pivotedDataTable = new DataTable()) //the pivoted result
+                {
+                    var firstColumnName = "Energikällor";
+                    var pivotColumnName = "År";
+
+                    pivotedDataTable.Columns.Add(firstColumnName);
+
+                    pivotedDataTable.Columns.AddRange(
+                        dt.Rows.Cast<DataRow>().Select(x => new DataColumn(x[pivotColumnName].ToString())).ToArray());
+
+                    for (var index = 1; index < dt.Columns.Count; index++)
+                    {
+                        pivotedDataTable.Rows.Add(
+                            new List<object> { dt.Columns[index].ColumnName }.Concat(
+                                dt.Rows.Cast<DataRow>().Select(x => x[dt.Columns[index].ColumnName])).ToArray());
+                    }
+
+                    #region DataGridView Styling
+
+                    dataGridView1.AllowUserToAddRows = false;
+                    dataGridView1.AllowUserToDeleteRows = false;
+                    dataGridView1.AllowUserToResizeRows = false;
+
+                    dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+                    dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    dataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+
+                    dataGridView1.DataSource = pivotedDataTable;
+                    dataGridView1.EnableHeadersVisualStyles = false;
+
+                    DataGridViewCellStyle style;
+                    style = new DataGridViewCellStyle();
+                    style.Alignment = DataGridViewContentAlignment.BottomCenter;
+                    style.BackColor = Color.Navy;
+                    style.Font = new Font("Cambria", 11F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
+                    style.ForeColor = Color.White;
+                    style.SelectionBackColor = SystemColors.Highlight;
+                    style.SelectionForeColor = Color.Navy;
+                    style.WrapMode = DataGridViewTriState.True;
+
+                    foreach (DataGridViewColumn col in dataGridView1.Columns) col.HeaderCell.Style = style;
+
+                    #endregion
+                }
             }
-
-            #region DataGridView Styling
-
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.AllowUserToResizeRows = false;
-
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-
-            dataGridView1.DataSource = pivotedDataTable;
-            dataGridView1.EnableHeadersVisualStyles = false;
-
-            DataGridViewCellStyle style;
-            style = new DataGridViewCellStyle();
-            style.Alignment = DataGridViewContentAlignment.BottomCenter;
-            style.BackColor = Color.Navy;
-            style.Font = new Font("Cambria", 11F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
-            style.ForeColor = Color.White;
-            style.SelectionBackColor = SystemColors.Highlight;
-            style.SelectionForeColor = Color.Navy;
-            style.WrapMode = DataGridViewTriState.True;
-
-            foreach (DataGridViewColumn col in dataGridView1.Columns) col.HeaderCell.Style = style;
-
-            #endregion
         }
         #endregion
 
